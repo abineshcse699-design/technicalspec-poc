@@ -1,6 +1,7 @@
 import { Routes } from '@angular/router';
 import { Tspec } from './tspec/tspec';
 import { MaterialRequiredComponent } from './pages/s-page/s-page';
+import { HhhComponent } from './pages/hhh/hhh';
 
 export const routes: Routes = [
 
@@ -16,6 +17,10 @@ export const routes: Routes = [
   {
     path:'s-page',
     component:MaterialRequiredComponent
+  },
+  {
+    path: 'hhh',
+    component: HhhComponent
   }
 
 ];
