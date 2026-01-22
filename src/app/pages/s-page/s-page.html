@@ -1,0 +1,377 @@
+<div class="h-screen flex bg-grey-100">
+
+
+  <!-- Sidebar -->
+  <aside class="w-64 bg-white border-r hidden md:block">
+  <mat-nav-list class="text-sm">
+
+    <!-- Title -->
+    <div class="px-4 py-3 font-semibold text-gray-600">
+      Chapters
+    </div>
+
+    <!-- Chapter Item -->
+   <a mat-list-item class="chapter-item ">
+  <span class="circle">01</span>
+  <span class="label">Subject</span>
+</a>
+
+<a mat-list-item class="chapter-item active">
+  <span class="circle" >02</span>
+  <span class="label">Material</span>
+</a>
+
+   <a mat-list-item class="chapter-item">
+      <span class="circle">03 </span>
+      <span class="label">Examination</span>
+
+    </a>
+
+
+    <a mat-list-item class="chapter-item">
+      <span class="circle">04  </span>
+      <span class="label">Assessment</span>
+
+    </a>
+
+    <a mat-list-item class="chapter-item">
+      <span class="circle">05</span>
+      <span class="label">Grouping</span>
+    </a>
+
+    <a mat-list-item class="chapter-item">
+      <span class="circle">06</span>
+      <span class="label">Characteristics</span>
+    </a>
+
+    <a mat-list-item class="chapter-item">
+      <span class="circle">07</span>
+      <span class="label">Table of characteristics</span>
+    </a>
+
+    <a mat-list-item class="chapter-item">
+      <span class="circle">08</span>
+      <span class="label">Explanations</span>
+    </a>
+
+    <a mat-list-item class="chapter-item">
+      <span class="circle">09</span>
+      <span class="label">Literature</span>
+    </a>
+
+<a mat-list-item class="chapter-item">
+      <span class="circle">10</span>
+      <span class="label">Technical Qusetionaire</span>
+    </a>
+
+    <a mat-list-item class="chapter-item">
+      <span class="circle">11</span>
+      <span class="label">Annex</span>
+    </a>
+
+  </mat-nav-list>
+</aside>
+
+
+  <!-- Main Content -->
+  <main class="flex-1 p-6 overflow-auto">
+
+    <!-- Header -->
+    <div class="mb-6">
+      <h1 class="text-2xl font-semibold text-green-900">
+        2. Material Required
+      </h1>
+    </div>
+
+<mat-accordion class="max-w-5xl flex flex-col gap-4">
+
+  <!-- 2.1 -->
+  <mat-expansion-panel class="mat-elevation-z0 ">
+   <mat-expansion-panel-header togglePosition="before">
+    <mat-panel-title class="font-semibold title-indent">
+      2.1 Title text
+    </mat-panel-title>
+   </mat-expansion-panel-header>
+   </mat-expansion-panel>
+
+
+
+  <!-- 2.2 -->
+   <mat-expansion-panel class="mat-elevation-z0 ">
+    <mat-expansion-panel-header togglePosition="before">
+      <mat-panel-title class="font-semibold title-indent">
+        2.2 Title text
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+   </mat-expansion-panel>
+
+  <!-- 2.3 -->
+
+      <mat-expansion-panel expanded class="mat-elevation-z0 ">
+      <mat-expansion-panel-header togglePosition="before">
+      <mat-panel-title class="font-semibold title-indent">
+        2.3 Seed Quality Requirements
+      </mat-panel-title>
+     </mat-expansion-panel-header>
+
+    <!-- CONTENT -->
+
+    <div class="p-4 space-y-4">
+
+      <p class="text-sm text-gray-600">
+        Please select one of the options (if applicable).
+      </p>
+
+      <!-- Radio group -->
+      <mat-radio-group class="flex flex-col gap-3">
+        <mat-radio-button value="seed-only">
+          Test Guidelines which only apply to seed-propagated varieties:
+        </mat-radio-button>
+
+        <mat-radio-button value="all-varieties">
+          Test Guidelines which apply to seed-propagated varieties as well as other types of varieties:
+        </mat-radio-button>
+      </mat-radio-group>
+
+      <!-- Preview box -->
+      <mat-card class="bg-gray-50 border mat-elevation-z0">
+        <mat-card-header>
+          <mat-card-title class="text-sm font-semibold text-orange-600">
+            PREVIEW
+          </mat-card-title>
+        </mat-card-header>
+
+        <mat-card-content class="text-sm text-gray-600">
+          There is currently no information to fill in.
+        </mat-card-content>
+      </mat-card>
+
+    </div>
+  </mat-expansion-panel>
+
+</mat-accordion>
+
+
+
+
+
+--
+
+    <!-- Footer Buttons -->
+    <!-- <div class="mt-8 flex justify-end gap-3">
+      <button mat-stroked-button class="border-gray-300">
+        Sign up
+      </button>
+      <button mat-flat-button color="primary">
+        Continue
+      </button>
+    </div> -->
+
+   <div class="max-w-5xl space-y-6">
+
+  <!-- Section Title -->
+   <h2 class="text-lg font-semibold text-green-800">
+    3. Method of Examination
+   </h2>
+
+   <mat-accordion>
+
+    <!-- 3.1 -->
+
+    <mat-expansion-panel expanded   class="mat-elevation-z0 white-panel ">
+
+      <mat-expansion-panel-header togglePosition="before">
+        <mat-panel-title class="font-semibold title-indent">
+          3.1 Number of Growing Cycles
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+
+      <div class="p-1 space-y-1">
+
+        <!-- Related link -->
+        <p class="text-sm text-gray-600">
+          Related links:
+          <a href="#" class="text-green-600 underline inline-flex items-center gap-1">
+            Explanation of the growing cycle (GN 8)
+            <mat-icon class="text-sm">open_in_new</mat-icon>
+          </a>
+        </p>
+
+        <!-- 3.1.1 -->
+        <div class="space-y-1">
+          <h4 class="font-semibold title-indent">3.1.1 Title text</h4>
+
+          <mat-radio-group class="flex flex-col gap-2">
+
+            <mat-radio-button value="single">
+              Single growing cycle
+            </mat-radio-button>
+
+            <mat-radio-button value="two">
+              Two independent growing cycles
+            </mat-radio-button>
+     <div class="ml-6 space-y-2 flex flex-col">
+              <mat-radio-button value="separate">
+                Two independent cycles in the form of two separate plantings
+              </mat-radio-button>
+
+              <mat-radio-button value="single-planting">
+                Two independent cycles from a single planting
+              </mat-radio-button>
+            </div>
+
+          </mat-radio-group>
+        </div>
+
+        <!-- 3.1.2 -->
+        <div>
+          <h4 class="font-semibold title-indent">
+            3.1.2 Standard items are configured by default
+          </h4>
+        </div>
+
+        <!-- 3.1.3 -->
+        <div class="space-y-4">
+          <h4 class="font-semibold title-indent">3.1.3 Title text</h4>
+
+          <p class="text-sm text-gray-700">
+            Is a satisfactory crop of fruit required?
+          </p>
+
+          <mat-radio-group class="flex items-center gap-6">
+            <mat-radio-button value="yes">Yes</mat-radio-button>
+            <mat-radio-button value="no">No</mat-radio-button>
+          </mat-radio-group>
+
+          <mat-radio-group class="flex flex-col gap-3 mt-3">
+
+            <mat-radio-button value="asw3a">
+              Fruit species with clearly defined dormant period.
+              <span class="text-green-600 font-medium">(ASW3(a))</span>
+            </mat-radio-button>
+
+            <mat-radio-button value="asw3b">
+              Fruit species with no clearly defined dormant period.
+              <span class="text-green-600 font-medium">(ASW3(b))</span>
+            </mat-radio-button>
+
+            <mat-radio-button value="asw3c">
+              Evergreen species with indeterminate growth.
+              <span class="text-green-600 font-medium">(ASW3(c))</span>
+            </mat-radio-button>
+
+          </mat-radio-group>
+        </div>
+
+        <!-- 3.1.4 -->
+
+
+      </div>
+    </mat-expansion-panel>
+
+  </mat-accordion>
+
+
+
+</div>
+
+--
+
+<div class="max-w-5xl flex flex-col gap-4">
+
+
+  <!-- PREVIEW BOX -->
+ <div>
+
+          <h4 class="font-semibold title-indent">
+            3.1.4 Standard items are configured by default
+          </h4>
+    </div>
+
+  <!-- PREVIEW BOX -->
+<mat-card class="bg-gray-50 mat-elevation-z0 border">
+  <mat-card-header>
+    <mat-card-title class="text-sm font-semibold text-orange-600">
+      PREVIEW
+    </mat-card-title>
+  </mat-card-header>
+
+  <mat-card-content class="text-sm text-gray-700 space-y-3">
+
+    <p>
+      3.1.1 The minimum duration of tests should normally be two independent
+      growing cycles.
+    </p>
+
+    <p>
+      3.1.2 The two independent growing cycles may be observed from a single
+      planting, examined in two separate growing cycles.
+    </p>
+
+    <!-- ✅ INLINE INPUT PARAGRAPH -->
+    <p class="leading-6">
+  3.1.3 In particular, it is essential that the
+  <input
+    type="text"
+    value="trees"
+    class="inline-mat-input"
+  />
+  produce a satisfactory crop of fruit in each of the two growing cycles.
+</p>
+
+
+    <p>
+      3.1.4 The testing of a …
+    </p>
+
+    </mat-card-content>
+    </mat-card>
+
+
+
+
+  <!-- 3.2 -->
+  <mat-expansion-panel class="mat-elevation-z0 border-b">
+    <mat-expansion-panel-header togglePosition="before">
+      <mat-panel-title class="font-semibold title-indent">
+        3.2 Testing Place
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+  </mat-expansion-panel>
+
+  <!-- 3.3 -->
+  <mat-expansion-panel class="mat-elevation-z0 border-b">
+    <mat-expansion-panel-header togglePosition="before">
+      <mat-panel-title class="font-semibold title-indent">
+        3.3 Conditions for Conducting the Examination
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+  </mat-expansion-panel>
+
+  <!-- 3.4 -->
+  <mat-expansion-panel class="mat-elevation-z0 border-b">
+    <mat-expansion-panel-header togglePosition="before">
+      <mat-panel-title class="font-semibold title-indent">
+        3.4 Test Design
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+  </mat-expansion-panel>
+
+    <mat-expansion-panel class="mat-elevation-z0 border-b">
+    <mat-expansion-panel-header togglePosition="before">
+      <mat-panel-title class="font-semibold title-indent">
+        3.5 Additional Tests
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+  </mat-expansion-panel>
+
+
+</div>
+
+
+  </main>
+  </div>
+
+
+
+

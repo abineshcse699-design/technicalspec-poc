@@ -1,0 +1,201 @@
+
+<div class="main w-full flex justify-center">
+
+  <form
+  [formGroup]="form"
+  class="bg-white p-6 rounded shadow w-4/5 max-w-none"
+>
+  <h2 class="text-lg font-semibold mb-1">Edit Characteristics</h2>
+  <p class="text-sm text-gray-500 mb-6">
+    Some fields are mandatory and must be completed (*)
+  </p>
+
+  <!-- Specific functions -->
+  <div class="mb-6">
+    <p class="primary text-green-700">Specific functions</p>
+    <div class="flex flex-wrap gap-6">
+      <mat-checkbox formControlName="asterics">
+        Asterics characteristic
+      </mat-checkbox>
+
+      <mat-checkbox formControlName="grouping">
+        Grouping characteristics
+      </mat-checkbox>
+
+      <mat-checkbox formControlName="tq5">
+        Add to TQ5 characteristics
+      </mat-checkbox>
+    </div>
+  </div>
+
+  <!-- Inputs -->
+ <!-- Inputs -->
+
+<div class="characteristics-row" style="display: flex; gap: 0px; margin-bottom: 24px; width: 80%;">
+  <div style="flex:1; min-width: 220px;">
+    <label for="characteristicName" style="display:block; font-size:15px; color:#4b5563; margin-bottom:4px;">Enter Characteristics Name <span style="color:#e11d48;">*</span></label>
+    <input id="characteristicName" type="text" class="input-field" placeholder="Leaf: length" style="width:100%; padding:8px 12px; border:1.5px solid #8ab4a6; border-radius:4px; font-size:16px;" />
+  </div>
+  <div style="flex:1; min-width: 160px;">
+    <label for="typeOfExpression" style="display:block; font-size:15px; color:#4b5563; margin-bottom:4px; margin-left: 26px;">Type of Expression <span style="color:#e11d48;">*</span></label>
+    <select id="typeOfExpression" class="input-field" style="width:80%; padding:8px 12px; margin-left: 28px; border:1.5px solid #8ab4a6; border-radius:4px; font-size:16px;">
+      <option value="QN">QN</option>
+      <option value="QL">QL</option>
+    </select>
+  </div>
+  <div style="flex:1; min-width:160px;">
+    <label for="growthStage" style="display:block; font-size:15px; color:#4b5563; margin-bottom:4px;">Growth Stage</label>
+    <input id="growthStage" type="text" class="input-field" placeholder="00" style="width:80%; margin-right:100px; padding:8px 12px; border:1.5px solid #8ab4a6; border-radius:4px; font-size:16px;" />
+  </div>
+</div>
+
+
+  <!-- Methods of Observation -->
+  <div class="dav">
+    <p class="font-medium mb-3 text-green-700">
+      Methods of Observation & Type of Plot *
+    </p>
+
+<div class="w-[60%]">
+  <div class="grid grid-cols-[repeat(5,auto)] gap-x-3 gap-y-2 items-start compact-checkbox text-sm">
+
+    <mat-checkbox formControlName="MG">MG</mat-checkbox>
+    <mat-checkbox formControlName="MS">MS</mat-checkbox>
+    <mat-checkbox formControlName="VG">VG</mat-checkbox>
+    <mat-checkbox formControlName="VS">VS</mat-checkbox>
+    <mat-checkbox formControlName="OTHER">OTHER</mat-checkbox>
+
+    <div class="-mt-1">
+      <mat-form-field appearance="outline" class="w-30 text-sm compact-field">
+        <mat-select formControlName="mgSelect" placeholder="Select"></mat-select>
+      </mat-form-field>
+    </div>
+
+    <div class="-mt-1">
+      <mat-form-field appearance="outline" class="w-30 text-sm compact-field">
+        <mat-select formControlName="msSelect" placeholder="Select"></mat-select>
+      </mat-form-field>
+    </div>
+
+  </div>
+</div>
+
+
+
+  </div>
+
+<div class="space-y-6 w-full">
+
+  <!-- Headings row -->
+<div class="grid grid-cols-12 ml-1 gap-4 text-sm font-medium text-green-700">
+    <div class="col-span-5">State of Expression</div>
+    <div class="col-span-2">Notes</div>
+    <div class="col-span-4">Example of varieties</div>
+    <div class="col-span-1"></div>
+  </div>
+
+  <!-- Fields row -->
+  <div class="grid grid-cols-12 gap-4 items-center">
+
+    <!-- State -->
+    <mat-form-field appearance="outline" class="col-span-5 w-full">
+      <input matInput value="Leaf: length" />
+    </mat-form-field>
+
+    <!-- Notes -->
+    <mat-form-field appearance="outline" class="col-span-2 w-full">
+      <mat-select value="1">
+        <mat-option value="1">1</mat-option>
+        <mat-option value="2">2</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <!-- Varieties -->
+    <mat-form-field appearance="outline" class="col-span-4 w-full compact-chip-field">
+
+      <mat-chip-grid class="flex flex-wrap gap-1">
+        <button class="chip">1 ×</button>
+        <button class="chip">2 ×</button>
+        <button class="chip">3 ×</button>
+        <button class="chip">4 ×</button>
+      </mat-chip-grid>
+
+      <mat-icon matSuffix class="text-gray-400">expand_more</mat-icon>
+    </mat-form-field>
+
+    <!-- Delete -->
+    <button mat-icon-button class="col-span-1 mb-3">
+      <mat-icon class="text-gray-400 hover:text-red-500">delete</mat-icon>
+    </button>
+
+  </div>
+</div>
+
+
+
+
+
+
+<div class="space-y-6 w-full">
+
+  <!-- Headings row -->
+<div class="grid grid-cols-12 ml-1 gap-4 text-sm font-medium text-green-700">
+
+    <div class="col-span-5">State of Expression</div>
+    <div class="col-span-2">Notes</div>
+    <div class="col-span-4">Example of varieties</div>
+    <div class="col-span-1"></div>
+  </div>
+
+  <!-- Fields row -->
+  <div class="grid grid-cols-12 gap-4 items-center">
+
+    <!-- State -->
+    <mat-form-field appearance="outline" class="col-span-5 w-full">
+      <input matInput value="Leaf: length" />
+    </mat-form-field>
+
+    <!-- Notes -->
+    <mat-form-field appearance="outline" class="col-span-2 w-full">
+      <mat-select value="1">
+        <mat-option value="1">1</mat-option>
+        <mat-option value="2">2</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <!-- Varieties -->
+    <mat-form-field appearance="outline" class="col-span-4 w-full compact-chip-field">
+
+      <mat-chip-grid class="flex flex-wrap gap-1">
+        <button class="chip">1 ×</button>
+        <button class="chip">2 ×</button>
+        <button class="chip">3 ×</button>
+        <button class="chip">4 ×</button>
+      </mat-chip-grid>
+
+      <mat-icon matSuffix class="text-gray-400">expand_more</mat-icon>
+    </mat-form-field>
+
+    <!-- Delete -->
+    <button mat-icon-button class="col-span-1 mb-3">
+      <mat-icon class="text-gray-400 hover:text-red-500">delete</mat-icon>
+    </button>
+
+  </div>
+</div>
+
+</form>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
