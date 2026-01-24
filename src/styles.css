@@ -235,3 +235,16 @@ mat-form-field {
   cursor: pointer;
 }
 
+.space{
+  display: flex;
+  margin-left: 40px;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.space1{
+  display: flex;
+ margin-left: 10px;
+  flex-direction: column;
+  gap: 10px;
+}

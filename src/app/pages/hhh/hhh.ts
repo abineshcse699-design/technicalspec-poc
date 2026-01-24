@@ -7,23 +7,32 @@ import { MatRadioModule } from '@angular/material/radio';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { MatNavList } from '@angular/material/list';
+import{MatFormFieldModule} from '@angular/material/form-field';
+import { Header } from "../header/header";
+import { Footer } from "../footer/footer";
+
 
 @Component({
   selector: 'app-hhh',
   standalone: true,
   imports: [
     CommonModule,
+    MatFormFieldModule,
     MatNavList,
     FormsModule,
     MatExpansionModule,
     MatRadioModule,
     MatCardModule,
-    MatIconModule
-  ],
+    MatIconModule,
+    Header,
+    Footer
+],
   templateUrl: './hhh.html',
   styleUrls: ['./hhh.css']
 })
 export class HhhComponent {
+
+    isExpanded = false;
 
   // =================================================
   // SIDEBAR : CHAPTERS
@@ -50,6 +59,8 @@ export class HhhComponent {
   // =================================================
   // SECTION 2 : Material Required
   // =================================================
+
+  sectionTitle1 = '1. Subject of the Test Guidelines';
   sectionTitle = '2. Material Required';
 
   panels: PanelConfig[] = [
@@ -202,6 +213,8 @@ export class HhhComponent {
     satisfactoryCrop: '',
     fruitType: ''
   };
+
+
 }
 
 /* =================================================
