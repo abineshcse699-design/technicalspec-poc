@@ -11,7 +11,6 @@ import{MatFormFieldModule} from '@angular/material/form-field';
 import { Header } from "../header/header";
 import { Footer } from "../footer/footer";
 
-
 @Component({
   selector: 'app-hhh',
   standalone: true,
@@ -37,6 +36,7 @@ export class HhhComponent {
   // =================================================
   // SIDEBAR : CHAPTERS
   // =================================================
+  
   chapters = [
     { id: '01', label: 'Subject', active: false },
     { id: '02', label: 'Material', active: true },

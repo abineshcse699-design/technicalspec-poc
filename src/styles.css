@@ -248,3 +248,20 @@ mat-form-field {
   flex-direction: column;
   gap: 10px;
 }
+
+.icon-check {
+  font-size: 18px;           /* slightly bigger icon */
+  width: 20px;
+  height: 20px;
+
+  color: goldenrod;
+  border: 3px solid goldenrod; /* THICK border */
+  border-radius: 50%;
+
+  background: transparent;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  transform: scale(1.05);    /* makes icon visually bolder */
+}

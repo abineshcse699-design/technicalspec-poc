@@ -1,376 +1,614 @@
-<div class="h-screen flex bg-grey-100">
+<!-- Header -->
+
+<app-header></app-header>
+
+<!-- Top navigation -->
+<div class="flex justify-between items-center mt-4 mb-4 w-[84%] ml-[112px] text-sm text-gray-600">
+
+  <a mat-button class="flex items-center text-green-900 gap-1">
+    <mat-icon>arrow_back</mat-icon>
+    Back to TG Dashboard
+  </a>
+
+<button mat-button class="flex items-center text-green-900 gap-1">
+  Logout
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 -960 960 960"
+    class="w-6 h-7 fill-green-900"
+  >
+    <path
+      d="M200-120q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h280v80H200v560h280v80H200Zm440-160-55-58 102-102H360v-80h327L585-622l55-58 200 200-200 200Z"
+    />
+  </svg>
+</button>
 
 
-  <!-- Sidebar -->
-  <aside class="w-64 bg-white border-r hidden md:block">
-  <mat-nav-list class="text-sm">
+</div>
+
+<!-- Main card (hide if showSubjectOnly, showMaterialOnly, or showExaminationOnly) -->
+<div class=" bg-gray-50 p-8" *ngIf="showSubjectOnly">
+  <div class="max-w-6xl mx-auto bg-white rounded-lg shadow-sm border border-gray-200 p-6">
+
+    <!-- TOP ROW -->
+    <div class="grid grid-cols-1 gap-4">
+
+      <div
+        class="ones grid items-center gap-6"
+        style="grid-template-columns: 280px 1fr auto;"
+      >
+
+        <!-- Left -->
+        <div class="space1">
+          <label class="text-lg text-gray-500 block">
+            Main Common Name(s):
+          </label>
+          <h2 class="text-lg font-semibold   text-green-900">
+            European Pear
+          </h2>
+        </div>
+
+        <!-- Middle -->
+        <div class="space">
+          <label class="text-lg text-gray-500 block">
+            UPOV Code(s):
+          </label>
+          <p class="text-lg font-semibold text-green-900">
+            PYRUS_COM; PYRUS_BCO; PYRUS_CPB; PYRUS_CUS
+          </p>
+        </div>
+
+        <!-- Button -->
+  <button
+  mat-raised-button
+  class="
+    !bg-green-900
+    !rounded-full
+    h-[38px]
+    px-3
+    flex items-center gap-1
+    shadow-none
+  "
+>
+  <mat-icon class="!text-lime-300 text-[18px]">
+    check_circle
+  </mat-icon>
+
+  <span class="text-sm font-medium text-lime-300">
+    Submit
+  </span>
+
+</button>
+
+
+      </div>
+    </div>
+
+    <!-- BOTTOM SECTION (unchanged – already correct) -->
+    <div class="mt-6 flex items-center justify-between border-t border-gray-200 pt-6">
+      <button
+        (click)="isExpanded = !isExpanded"
+        class="flex items-center gap-2 text-gray-700 hover:text-gray-900 transition-colors bg-transparent border-none cursor-pointer"
+      >
+        <mat-icon [class.rotate-180]="isExpanded" class="transition-transform">
+          expand_more
+        </mat-icon>
+        <span class="text-sm font-medium">More details</span>
+      </button>
+
+      <div class="text-right">
+        <div class="text-xs text-gray-500">TG/export_test_2</div>
+        <div class="text-xs text-gray-500">
+          Saved: 02 Dec, 2025 - 31 Dec, 2025
+        </div>
+      </div>
+    </div>
+
+    <!-- EXPANDABLE CONTENT (unchanged) -->
+    <div *ngIf="isExpanded" class="mt-6 pt-6 border-t border-gray-200">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div>
+          <h3 class="text-sm font-semibold text-gray-700 mb-2">
+            Additional Information
+          </h3>
+          <p class="text-sm text-gray-600">
+            More details about the European Pear variety would appear here.
+          </p>
+        </div>
+        <div>
+          <h3 class="text-sm font-semibold text-gray-700 mb-2">
+            Classification Details
+          </h3>
+          <p class="text-sm text-gray-600">
+            UPOV classification and variety characteristics.
+          </p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+
+<div class="h-screen flex  overflow-y-auto">
+
+
+  <!-- ================= SIDEBAR ================= -->
+<!-- ================= SIDEBAR ================= -->
+<aside class="w-48 ml-27 bg-white border-r border-gray-200 mt-6 hidden md:block">
+
+  <mat-nav-list class="text-m">
 
     <!-- Title -->
-    <div class="px-4 py-3 font-semibold text-gray-600">
+    <div class="px-4 py-3 font-semibold text-gray-500">
       Chapters
     </div>
 
-    <!-- Chapter Item -->
-   <a mat-list-item class="chapter-item ">
-  <span class="circle">01</span>
-  <span class="label">Subject</span>
-</a>
+    <!-- Chapter Items -->
+    <a
+      mat-list-item
+      *ngFor="let chapter of chapters"
 
-<a mat-list-item class="chapter-item active">
-  <span class="circle" >02</span>
-  <span class="label">Material</span>
-</a>
+      (click)="setActiveChapter(chapter)"
+      class="mx-2 my-0.5 flex items-center gap-3 rounded-md px-3 py-2 cursor-pointer
+             transition-colors
+             hover:bg-gray-100"
+      [ngClass]="{
+        'bg-emerald-50 border-l-4 border-emerald-500': chapter.active
+      }"
+    >
+      <!-- Number Circle -->
+   <span
+  class="flex h-7 w-7 items-center justify-center rounded-full border text-xs font-semibold text-gray-700"
+  style="border: 2px solid goldenrod"
+  [ngClass]="{
+    'bg-emerald-500 text-white': chapter.active
+  }"
+>
+  {{ chapter.id }}
+</span>
 
-   <a mat-list-item class="chapter-item">
-      <span class="circle">03 </span>
-      <span class="label">Examination</span>
+
+      <!-- Label -->
+     <span
+  class="text-[16px] leading-tight text-gray-700"
+  [ngClass]="{
+    'text-emerald-600 font-semibold': chapter.active
+  }"
+>
+  {{ chapter.label }}
+</span>
 
     </a>
 
-
-    <a mat-list-item class="chapter-item">
-      <span class="circle">04  </span>
-      <span class="label">Assessment</span>
-
-    </a>
-
-    <a mat-list-item class="chapter-item">
-      <span class="circle">05</span>
-      <span class="label">Grouping</span>
-    </a>
-
-    <a mat-list-item class="chapter-item">
-      <span class="circle">06</span>
-      <span class="label">Characteristics</span>
-    </a>
-
-    <a mat-list-item class="chapter-item">
-      <span class="circle">07</span>
-      <span class="label">Table of characteristics</span>
-    </a>
-
-    <a mat-list-item class="chapter-item">
-      <span class="circle">08</span>
-      <span class="label">Explanations</span>
-    </a>
-
-    <a mat-list-item class="chapter-item">
-      <span class="circle">09</span>
-      <span class="label">Literature</span>
-    </a>
-
-<a mat-list-item class="chapter-item">
-      <span class="circle">10</span>
-      <span class="label">Technical Qusetionaire</span>
-    </a>
-
-    <a mat-list-item class="chapter-item">
-      <span class="circle">11</span>
-      <span class="label">Annex</span>
-    </a>
+    <!-- Collapse -->
+    <div
+      class="mt-2 flex items-center gap-2 px-4 py-3 text-sm font-medium
+             text-emerald-600 border-t border-gray-200 cursor-pointer"
+    >
+      <mat-icon class="text-base">chevron_left</mat-icon>
+      Collapse
+    </div>
 
   </mat-nav-list>
 </aside>
 
 
-  <!-- Main Content -->
-  <main class="flex-1 p-6 overflow-auto">
 
-    <!-- Header -->
-    <div class="mb-6">
-      <h1 class="text-2xl font-semibold text-green-900">
-        2. Material Required
-      </h1>
+<main class="flex-1 p-6 mr-9  ">
+
+<div class="max-w-5xl mx-auto p-6 mr-15  bg-white space-y-6" *ngIf="showSubjectOnly &&  !showMaterialOnly">
+
+  <div class="mb-6">
+  <h1 class="text-2xl font-semibold text-green-900">
+    {{ sectionTitle1 }}
+  </h1>
+</div>
+
+  <!-- Section 1: Related links and main sentence -->
+  <div class="border-b border-gray-200 pb-4 " *ngIf="showSubjectOnly && !showMaterialOnly || chapters[0].active" >
+
+    <!-- Related links -->
+    <div class="text-sm text-gray-700 mb-2">
+      <span class="font-medium">Related links:</span>
+
+      <a class="ml-1 text-green-900 hover:underline inline-flex items-center gap-1" href="#">
+        More than one species (GN3)
+        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+          <path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z"/>
+          <path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z"/>
+        </svg>
+      </a>
+
+      <a class="ml-2 text-green-900 hover:underline inline-flex items-center gap-1" href="#">
+        Different types or groups within a species or genus (GN4)
+        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+          <path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z"/>
+          <path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z"/>
+        </svg>
+      </a>
+
+      <a class="ml-2 text-green-900 hover:underline inline-flex items-center gap-1" href="#">
+        Family name (GN5)
+        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+          <path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z"/>
+          <path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z"/>
+        </svg>
+      </a>
+      <br>
+
+      <a class="text-green-900 hover:underline inline-flex items-center gap-1" href="#">
+        Guidance for New Types and Species (GN6)
+        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+          <path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z"/>
+          <path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z"/>
+        </svg>
+      </a>
     </div>
 
-<mat-accordion class="max-w-5xl flex flex-col gap-4">
-
-  <!-- 2.1 -->
-  <mat-expansion-panel class="mat-elevation-z0 ">
-   <mat-expansion-panel-header togglePosition="before">
-    <mat-panel-title class="font-semibold title-indent">
-      2.1 Title text
-    </mat-panel-title>
-   </mat-expansion-panel-header>
-   </mat-expansion-panel>
-
-
-
-  <!-- 2.2 -->
-   <mat-expansion-panel class="mat-elevation-z0 ">
-    <mat-expansion-panel-header togglePosition="before">
-      <mat-panel-title class="font-semibold title-indent">
-        2.2 Title text
-      </mat-panel-title>
-    </mat-expansion-panel-header>
-   </mat-expansion-panel>
-
-  <!-- 2.3 -->
-
-      <mat-expansion-panel expanded class="mat-elevation-z0 ">
-      <mat-expansion-panel-header togglePosition="before">
-      <mat-panel-title class="font-semibold title-indent">
-        2.3 Seed Quality Requirements
-      </mat-panel-title>
-     </mat-expansion-panel-header>
-
-    <!-- CONTENT -->
-
-    <div class="p-4 space-y-4">
-
-      <p class="text-sm text-gray-600">
-        Please select one of the options (if applicable).
+    <!-- Main sentence with icon -->
+    <div class="flex justify-between items-start mt-4">
+      <p class="text-base text-gray-800 leading-snug">
+        These Test Guidelines apply to all varieties of
+        <span class="italic">Malpighia emarginata</span> DC.
+        <br />
+        Continue Sentence
       </p>
 
-      <!-- Radio group -->
-      <mat-radio-group class="flex flex-col gap-3">
-        <mat-radio-button value="seed-only">
-          Test Guidelines which only apply to seed-propagated varieties:
-        </mat-radio-button>
-
-        <mat-radio-button value="all-varieties">
-          Test Guidelines which apply to seed-propagated varieties as well as other types of varieties:
-        </mat-radio-button>
-      </mat-radio-group>
-
-      <!-- Preview box -->
-      <mat-card class="bg-gray-50 border mat-elevation-z0">
-        <mat-card-header>
-          <mat-card-title class="text-sm font-semibold text-orange-600">
-            PREVIEW
-          </mat-card-title>
-        </mat-card-header>
-
-        <mat-card-content class="text-sm text-gray-600">
-          There is currently no information to fill in.
-        </mat-card-content>
-      </mat-card>
-
+      <svg class="w-10 h-5 text-green-900 mb-7 mr-10" fill="currentColor" viewBox="0 0 20 20">
+        <path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z"/>
+        <path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z"/>
+      </svg>
     </div>
+
+  </div>
+
+
+
+  <!-- Section 2: Clarification question -->
+
+<div class="max-w-5xl text-gray-800" >
+
+  <!-- Question -->
+  <p class="text-sm leading-relaxed mb-2">
+    Should clarification be provided that any other species or hybrids not explicitly covered
+    by these Test Guidelines should be treated according <br> to the provisions of document
+    TGP/12 "Guidance for New Types and Species"
+    <span class="text-red-500">*</span>
+  </p>
+
+  <!-- Yes / No -->
+  <mat-radio-group class="flex gap-6 ml-[28%] mb-4">
+    <mat-radio-button value="yes">Yes</mat-radio-button>
+    <mat-radio-button value="no">No</mat-radio-button>
+  </mat-radio-group>
+
+  <!-- Guidance sentence with inline input -->
+ <!-- Guidance sentence with inline input -->
+<!-- Guidance sentence with inline input -->
+<div class="flex flex-wrap items-baseline gap-x-1 gap-y-1 text-sm text-gray-700">
+  <span>Guidance on the use of Test Guidelines for</span>
+
+  <input
+    type="text"
+    value="interspec. hybrids"
+    class="border border-gray-300 bg-blue-50 rounded px-2 py-0.5 text-sm focus:outline-none focus:border-blue-500 w-40"
+  />
+
+  <span>that are not explicitly covered by Test Guidelines is provided in</span>
+  <span>document TGP/13 "Guidance for New Types and Species"</span>
+</div>
+
+
+  <!-- Add Paragraph button -->
+ <!-- Add Paragraph button -->
+<button class="rounded-full px-4 py-2 border border-yellow-400 text-green-900 hover:bg-gray-50 flex items-center gap-2 text-sm">
+  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <circle cx="12" cy="12" r="10" stroke-width="2"/>
+    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v8m-4-4h8"/>
+  </svg>
+  Add Paragraph
+</button>
+
+</div>
+
+  <!-- Section 3: Additional characteristics question -->
+  <div class="max-w-4xl text-gray-700 text-sm  ">
+
+  <!-- Question with inline radio buttons -->
+  <div class="flex flex-wrap items-center ">
+    <span>Might it be necessary to add additional characteristics or additional states of expressions for ornamental, fruit, industrial, vegetable, agricultural or other varieties?  <span class="text-red-500">*</span> </span>
+
+
+     <mat-radio-group class="flex gap-6 ml-[29%] mb-4 mb-8">
+    <mat-radio-button value="yes">Yes</mat-radio-button>
+    <mat-radio-button value="no">No</mat-radio-button>
+  </mat-radio-group>
+  </div>
+
+  <!-- Second sentence with inline input -->
+  <div class="flex flex-wrap items-baseline  ">
+    <span>In the case of</span>
+
+    <input
+      type="text"
+      value="agricultural"
+      class="border border-gray-300 bg-blue-50 rounded px-2 py-0.5 text-m focus:outline-none focus:border-blue-500 w-48"
+    />
+
+    <span>, in particular, it may be necessary to use additional characteristics or additional states of </span>
+     <span>expression to those included in the Table of Characteristics in order to examine Distinctness, Uniformity and Stability.</span>
+  </div>
+
+  <!-- Preview section -->
+  <div class="bg-whitesmoke-500 border border-orange-200 rounded px-3 py-2 mt-4">
+    <div class="flex items-center gap-2 text-orange-600 font-medium mb-2">
+      <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+        <path d="M10 12a2 2 0 100-4 2 2 0 000 4z"/>
+        <path fill-rule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clip-rule="evenodd"/>
+      </svg>
+      <span>PREVIEW</span>
+    </div>
+    <p class="text-gray-500 text-sm">
+      1.1 These Test Guidelines apply to all varieties of Argania spinosa (L.) Skeels. Continue Sentence
+    </p>
+  </div>
+
+</div>
+
+</div>
+
+
+
+<div class="mb-6" *ngIf="!showSubjectOnly && showMaterialOnly">
+  <h1 class="text-2xl font-semibold text-green-900">
+    {{ sectionTitle }}
+  </h1>
+</div>
+
+<mat-accordion class="max-w-5xl flex flex-col gap-4" *ngIf="!showSubjectOnly && !showExaminationOnly">
+
+  <mat-expansion-panel
+    *ngFor="let panel of panels"
+    [expanded]="panel.expanded"
+    class="mat-elevation-z0">
+
+    <mat-expansion-panel-header togglePosition="before">
+      <mat-panel-title class="font-semibold title-indent">
+        {{ panel.title }}
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+
+    <!-- EMPTY PANEL -->
+    <ng-container *ngIf="panel.type === 'empty'">
+      <!-- future content -->
+    </ng-container>
+
+    <!-- RADIO PANEL -->
+    <ng-container *ngIf="panel.type === 'radio'">
+
+      <div class="p-4 space-y-4">
+
+        <p class="text-sm text-gray-600">
+          {{ panel.description }}
+        </p>
+
+        <mat-radio-group
+          class="flex flex-col gap-3"
+          [value]="panel.selectedValue"
+          (change)="onRadioChange(panel, $event.value)">
+
+          <mat-radio-button
+            *ngFor="let option of panel.options"
+            [value]="option.value">
+
+            {{ option.label }}
+
+          </mat-radio-button>
+        </mat-radio-group>
+
+        <mat-card class="bg-gray-50 border mat-elevation-z0">
+          <mat-card-header>
+            <mat-card-title class="text-sm font-semibold text-orange-600">
+              PREVIEW
+            </mat-card-title>
+          </mat-card-header>
+
+          <mat-card-content class="text-sm text-gray-600">
+            {{ panel.previewText }}
+          </mat-card-content>
+        </mat-card>
+
+      </div>
+
+    </ng-container>
+
   </mat-expansion-panel>
 
 </mat-accordion>
 
 
 
-
-
---
-
-    <!-- Footer Buttons -->
-    <!-- <div class="mt-8 flex justify-end gap-3">
-      <button mat-stroked-button class="border-gray-300">
-        Sign up
-      </button>
-      <button mat-flat-button color="primary">
-        Continue
-      </button>
-    </div> -->
-
-<div class="max-w-5xl space-y-6">
+<div class="max-w-5xl space-y-6" *ngIf="showExaminationOnly">
 
   <!-- Section Title -->
-   <h2 class="text-lg font-semibold text-green-800">
-    3. Method of Examination
-   </h2>
+  <h2 class="text-lg font-semibold text-green-800">
+    {{ methodOfExamination.title }}
+  </h2>
 
-   <mat-accordion>
+  <mat-accordion>
 
-    <!-- 3.1 -->
-
-    <mat-expansion-panel expanded   class="mat-elevation-z0 white-panel ">
+    <mat-expansion-panel
+      *ngFor="let section of methodOfExamination.sections"
+      [expanded]="section.expanded"
+      class="mat-elevation-z0 white-panel"
+    >
 
       <mat-expansion-panel-header togglePosition="before">
         <mat-panel-title class="font-semibold title-indent">
-          3.1 Number of Growing Cycles
+          {{ section.id }} {{ section.title }}
         </mat-panel-title>
       </mat-expansion-panel-header>
 
-      <div class="p-1 space-y-1">
+      <div class="p-2 space-y-4">
 
         <!-- Related link -->
-        <p class="text-sm text-gray-600">
+        <p *ngIf="section.relatedLink" class="text-sm text-gray-600">
           Related links:
-          <a href="#" class="text-green-600 underline inline-flex items-center gap-1">
-            Explanation of the growing cycle (GN 8)
+          <a
+            [href]="section.relatedLink.url"
+            class="text-green-600 underline inline-flex items-center gap-1"
+          >
+            {{ section.relatedLink.text }}
             <mat-icon class="text-sm">open_in_new</mat-icon>
           </a>
         </p>
 
-        <!-- 3.1.1 -->
-        <div class="space-y-1">
-          <h4 class="font-semibold title-indent">3.1.1 Title text</h4>
+        <!-- Section Items -->
+        <ng-container *ngFor="let item of section.items">
 
-          <mat-radio-group class="flex flex-col gap-2">
+          <!-- TEXT ONLY -->
+          <h4
+            *ngIf="item.type === 'text'"
+            class="font-semibold title-indent"
+          >
+            {{ item.id }} {{ item.title }}
+          </h4>
 
-            <mat-radio-button value="single">
-              Single growing cycle
-            </mat-radio-button>
+          <!-- GROWING CYCLE -->
+          <div *ngIf="item.type === 'cycle'" class="space-y-2">
+            <h4 class="font-semibold title-indent">
+              {{ item.id }} {{ item.title }}
+            </h4>
 
-            <mat-radio-button value="two">
-              Two independent growing cycles
-            </mat-radio-button>
-     <div class="ml-6 space-y-2 flex flex-col">
-              <mat-radio-button value="separate">
-                Two independent cycles in the form of two separate plantings
+            <mat-radio-group
+              [(ngModel)]="form.growingCycle"
+              class="flex flex-col gap-2"
+            >
+              <mat-radio-button
+                *ngFor="let opt of item.options"
+                [value]="opt.value"
+              >
+                {{ opt.label }}
               </mat-radio-button>
+            </mat-radio-group>
 
-              <mat-radio-button value="single-planting">
-                Two independent cycles from a single planting
+            <div
+              *ngIf="form.growingCycle === 'two'"
+              class="ml-6 flex flex-col gap-2"
+            >
+              <mat-radio-button
+                *ngFor="let sub of item.subOptions"
+                [value]="sub.value"
+                [(ngModel)]="form.cycleType"
+              >
+                {{ sub.label }}
               </mat-radio-button>
             </div>
+          </div>
 
-          </mat-radio-group>
-        </div>
+          <!-- FRUIT SECTION -->
+          <div *ngIf="item.type === 'fruit'" class="space-y-3">
+            <h4 class="font-semibold title-indent">
+              {{ item.id }} {{ item.title }}
+            </h4>
 
-        <!-- 3.1.2 -->
-        <div>
-          <h4 class="font-semibold title-indent">
-            3.1.2 Standard items are configured by default
-          </h4>
-        </div>
+            <p class="text-sm text-gray-700">
+              {{ item.question }}
+            </p>
 
-        <!-- 3.1.3 -->
-        <div class="space-y-4">
-          <h4 class="font-semibold title-indent">3.1.3 Title text</h4>
+            <mat-radio-group
+              [(ngModel)]="form.satisfactoryCrop"
+              class="flex gap-6"
+            >
+              <mat-radio-button value="yes">Yes</mat-radio-button>
+              <mat-radio-button value="no">No</mat-radio-button>
+            </mat-radio-group>
 
-          <p class="text-sm text-gray-700">
-            Is a satisfactory crop of fruit required?
-          </p>
+            <mat-radio-group
+              [(ngModel)]="form.fruitType"
+              class="flex flex-col gap-2 mt-2"
+            >
+              <mat-radio-button
+                *ngFor="let f of item.fruitTypes"
+                [value]="f.value"
+              >
+                {{ f.label }}
+                <span class="text-green-600 font-medium">
+                  ({{ f.code }})
+                </span>
+              </mat-radio-button>
+            </mat-radio-group>
+          </div>
 
-          <mat-radio-group class="flex items-center gap-6">
-            <mat-radio-button value="yes">Yes</mat-radio-button>
-            <mat-radio-button value="no">No</mat-radio-button>
-          </mat-radio-group>
-
-          <mat-radio-group class="flex flex-col gap-3 mt-3">
-
-            <mat-radio-button value="asw3a">
-              Fruit species with clearly defined dormant period.
-              <span class="text-green-600 font-medium">(ASW3(a))</span>
-            </mat-radio-button>
-
-            <mat-radio-button value="asw3b">
-              Fruit species with no clearly defined dormant period.
-              <span class="text-green-600 font-medium">(ASW3(b))</span>
-            </mat-radio-button>
-
-            <mat-radio-button value="asw3c">
-              Evergreen species with indeterminate growth.
-              <span class="text-green-600 font-medium">(ASW3(c))</span>
-            </mat-radio-button>
-
-          </mat-radio-group>
-        </div>
-
-        <!-- 3.1.4 -->
-
+        </ng-container>
 
       </div>
     </mat-expansion-panel>
 
   </mat-accordion>
-
-
-
 </div>
 
---
+<div class="max-w-5xl flex flex-col gap-4" *ngIf="showExaminationOnly" >
 
-<div class="max-w-5xl flex flex-col gap-4">
+  <!-- ================= PREVIEW HEADING ================= -->
+  <h4 class="font-semibold title-indent">
+    {{ previewSection.heading }}
+  </h4>
 
+  <!-- ================= PREVIEW CARD ================= -->
+  <mat-card class="bg-gray-50 mat-elevation-z0 border">
+    <mat-card-header>
+      <mat-card-title class="text-sm font-semibold text-orange-600">
+        PREVIEW
+      </mat-card-title>
+    </mat-card-header>
 
-  <!-- PREVIEW BOX -->
- <div>
+    <mat-card-content class="text-sm text-gray-700 space-y-3">
 
-          <h4 class="font-semibold title-indent">
-            3.1.4 Standard items are configured by default
-          </h4>
-    </div>
+      <!-- Paragraphs -->
+      <p *ngFor="let text of previewSection.paragraphs">
+        {{ text }}
+      </p>
 
-  <!-- PREVIEW BOX -->
-<mat-card class="bg-gray-50 mat-elevation-z0 border">
-  <mat-card-header>
-    <mat-card-title class="text-sm font-semibold text-orange-600">
-      PREVIEW
-    </mat-card-title>
-  </mat-card-header>
-
-  <mat-card-content class="text-sm text-gray-700 space-y-3">
-
-    <p>
-      3.1.1 The minimum duration of tests should normally be two independent
-      growing cycles.
-    </p>
-
-    <p>
-      3.1.2 The two independent growing cycles may be observed from a single
-      planting, examined in two separate growing cycles.
-    </p>
-
-    <!-- ✅ INLINE INPUT PARAGRAPH -->
-    <p class="leading-6">
-  3.1.3 In particular, it is essential that the
-  <input
-    type="text"
-    value="trees"
-    class="inline-mat-input"
-  />
-  produce a satisfactory crop of fruit in each of the two growing cycles.
-</p>
-
-
-    <p>
-      3.1.4 The testing of a …
-    </p>
+      <!-- Inline input paragraph -->
+      <p class="leading-6">
+        3.1.3 In particular, it is essential that the
+        <input
+          type="text"
+          [(ngModel)]="previewSection.inlineInputText"
+          class="inline-mat-input"
+        />
+        produce a satisfactory crop of fruit in each of the two growing cycles.
+      </p>
 
     </mat-card-content>
-    </mat-card>
+  </mat-card>
 
-
-
-
-  <!-- 3.2 -->
-  <mat-expansion-panel class="mat-elevation-z0 border-b">
+  <!-- ================= REUSABLE EXPANSION PANELS ================= -->
+  <mat-expansion-panel
+    *ngFor="let panel of simplePanels"
+    class="mat-elevation-z0 border-b"
+  >
     <mat-expansion-panel-header togglePosition="before">
       <mat-panel-title class="font-semibold title-indent">
-        3.2 Testing Place
+        {{ panel.title }}
       </mat-panel-title>
     </mat-expansion-panel-header>
   </mat-expansion-panel>
 
-  <!-- 3.3 -->
-  <mat-expansion-panel class="mat-elevation-z0 border-b">
-    <mat-expansion-panel-header togglePosition="before">
-      <mat-panel-title class="font-semibold title-indent">
-        3.3 Conditions for Conducting the Examination
-      </mat-panel-title>
-    </mat-expansion-panel-header>
-  </mat-expansion-panel>
+</div>
 
-  <!-- 3.4 -->
-  <mat-expansion-panel class="mat-elevation-z0 border-b">
-    <mat-expansion-panel-header togglePosition="before">
-      <mat-panel-title class="font-semibold title-indent">
-        3.4 Test Design
-      </mat-panel-title>
-    </mat-expansion-panel-header>
-  </mat-expansion-panel>
 
-    <mat-expansion-panel class="mat-elevation-z0 border-b">
-    <mat-expansion-panel-header togglePosition="before">
-      <mat-panel-title class="font-semibold title-indent">
-        3.5 Additional Tests
-      </mat-panel-title>
-    </mat-expansion-panel-header>
-  </mat-expansion-panel>
+</main>
 
 
 </div>
 
 
-  </main>
-  </div>
+
+
 
 
 

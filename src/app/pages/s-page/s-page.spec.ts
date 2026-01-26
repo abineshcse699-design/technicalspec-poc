@@ -1,17 +1,17 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { MaterialRequiredComponent } from './s-page';
+import { SPageComponent } from './s-page';
 
 describe('SPage', () => {
-  let component: MaterialRequiredComponent;
-  let fixture: ComponentFixture<MaterialRequiredComponent>;
+  let component: SPageComponent;
+  let fixture: ComponentFixture<SPageComponent>;
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [MaterialRequiredComponent]
+      imports: [SPageComponent]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(MaterialRequiredComponent);
+    fixture = TestBed.createComponent(SPageComponent);
     component = fixture.componentInstance;
     await fixture.whenStable();
   });
